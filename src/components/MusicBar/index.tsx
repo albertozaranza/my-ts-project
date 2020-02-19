@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Animated, Easing, Dimensions} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   Container,
   AlbumPhoto,
@@ -14,6 +15,8 @@ import {
 
 import IconButton from '../IconButton';
 
+import {Creators as MusicActions} from '../../store/ducks/music';
+
 const {width} = Dimensions.get('window');
 const widthSize = width - 32;
 const widthSizeTranslate = width - 101;
@@ -26,6 +29,8 @@ export default function MusicBar() {
   const [opacity, setOpacity] = useState(new Animated.Value(1));
   const [width, setWidth] = useState(new Animated.Value(widthSize));
   const [translateX, setTranslateX] = useState(new Animated.Value(0));
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     handleAlbumPhotoAnimation();
@@ -92,6 +97,12 @@ export default function MusicBar() {
     setPaused(!paused);
   }
 
+  var id = 0;
+  function handleNext() {
+    id >= 2 ? (id = 0) : (id += 1);
+    dispatch(MusicActions.nextMusic(id));
+  }
+
   return (
     <Container
       style={{
@@ -131,7 +142,12 @@ export default function MusicBar() {
           paused={paused}
           name={paused ? 'play-arrow' : 'pause'}
         />
-        <IconButton disabled={paused} paused={paused} name="fast-forward" />
+        <IconButton
+          onPress={handleNext}
+          disabled={paused}
+          paused={paused}
+          name="fast-forward"
+        />
       </ButtonsContainer>
     </Container>
   );
