@@ -1,9 +1,6 @@
 import styled from 'styled-components/native';
 import {Animated, Dimensions} from 'react-native';
 
-import {PausedButton as PausedButtonProps} from '../types';
-import {ForwardButton as ForwardButtonProps} from '../types';
-
 const {width} = Dimensions.get('window');
 
 export const Container = Animated.createAnimatedComponent(
@@ -73,21 +70,3 @@ export const ButtonsContainer = Animated.createAnimatedComponent(styled.View`
   justify-content: space-between;
   margin-right: 10px;
 `);
-
-export const PausedButton = styled.TouchableOpacity<PausedButtonProps>`
-  border-radius: 50px;
-  height: 30px;
-  width: 30px;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({paused}) => (paused ? '#0057ff' : '#eee')};
-`;
-
-export const ForwardButton = styled.TouchableOpacity<ForwardButtonProps>`
-  border-radius: 50px;
-  height: 30px;
-  width: 30px;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({paused}) => (paused ? '#eee' : '#0057ff')};
-`;

@@ -10,11 +10,9 @@ import {
   ButtonsContainer,
   AlbumPhotoContainer,
   Blank,
-  ForwardButton,
-  PausedButton,
 } from './styles';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import IconButton from '../IconButton';
 
 const {width} = Dimensions.get('window');
 const widthSize = width - 32;
@@ -128,20 +126,12 @@ export default function MusicBar() {
           transform: [{scaleX: scale}, {scaleY: scale}],
           opacity,
         }}>
-        <PausedButton onPress={handlePause} paused={paused}>
-          <Icon
-            name={paused ? 'play-arrow' : 'pause'}
-            color={paused ? '#eee' : '#0057ff'}
-            size={15}
-          />
-        </PausedButton>
-        <ForwardButton disabled={paused} paused={paused}>
-          <Icon
-            name="fast-forward"
-            color={paused ? '#0057ff' : '#eee'}
-            size={15}
-          />
-        </ForwardButton>
+        <IconButton
+          onPress={handlePause}
+          paused={paused}
+          name={paused ? 'play-arrow' : 'pause'}
+        />
+        <IconButton disabled={paused} paused={paused} name="fast-forward" />
       </ButtonsContainer>
     </Container>
   );
