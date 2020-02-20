@@ -28,3 +28,8 @@ export interface Album {
     avatar: ImageSourcePropType;
   };
 }
+
+export interface Navigate {
+  name: string;
+  params?: {};
+}

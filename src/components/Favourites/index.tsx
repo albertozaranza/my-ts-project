@@ -1,49 +1,26 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
-import {
-  Container,
-  Title,
-  TitleContainer,
-  ViewAll,
-  SampleText,
-  AlbumContainer,
-  AlbumName,
-  AlbumPhoto,
-  AlbumSinger,
-  InfoContainer,
-  List,
-} from './styles';
+import {Container, Title, TitleContainer, ViewAll, SampleText} from './styles';
 
 import albums from '../../data/albums';
 
+import List from '../List';
+
 const comprimedData = albums.slice(0, 4);
 
-import {Album as AlbumProps} from '../types';
-
 export default function Favourites() {
+  const navigation = useNavigation();
+
   return (
     <Container>
       <TitleContainer>
         <Title>My favourite ({comprimedData.length})</Title>
-        <ViewAll>
+        <ViewAll onPress={() => navigation.navigate('Favourites')}>
           <SampleText>View all</SampleText>
         </ViewAll>
       </TitleContainer>
-
-      <List
-        data={comprimedData}
-        scrollEnabled={false}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({item}: AlbumProps) => (
-          <AlbumContainer>
-            <AlbumPhoto source={item.avatar}></AlbumPhoto>
-            <InfoContainer>
-              <AlbumName>{item.name}</AlbumName>
-              <AlbumSinger>{item.singer}</AlbumSinger>
-            </InfoContainer>
-          </AlbumContainer>
-        )}
-      />
+      <List data={comprimedData} scrollEnabled={false} />
     </Container>
   );
 }

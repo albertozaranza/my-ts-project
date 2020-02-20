@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Alert} from 'react-native';
+import {Alert, Platform, ToastAndroid} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -23,7 +23,11 @@ export default function Main() {
   const {id, albumLength} = useSelector(({music}: MusicProps) => music);
 
   useEffect(() => {
-    if (favourite) Alert.alert('Favourited');
+    if (favourite) {
+      Platform.OS === 'ios'
+        ? Alert.alert('Favourited')
+        : ToastAndroid.show('Favourited', ToastAndroid.SHORT);
+    }
   }, [favourite]);
 
   function handleFavourite() {

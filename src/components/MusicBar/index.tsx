@@ -32,7 +32,7 @@ export default function MusicBar() {
   const [width, setWidth] = useState(new Animated.Value(widthSize));
   const [translateX, setTranslateX] = useState(new Animated.Value(0));
 
-  const {name, albumPhoto, id} = useSelector(({music}: MusicProps) => music);
+  const {name, albumPhoto} = useSelector(({music}: MusicProps) => music);
 
   const dispatch = useDispatch();
 
@@ -49,6 +49,7 @@ export default function MusicBar() {
       toValue: 1,
       duration: 3000,
       easing: Easing.linear,
+      useNativeDriver: true,
     }),
   );
 
@@ -57,6 +58,7 @@ export default function MusicBar() {
     duration: 200,
     delay: hide ? 0 : 400,
     easing: Easing.linear,
+    useNativeDriver: true,
   });
 
   const musicInfoAnimation = Animated.timing(opacity, {
@@ -64,6 +66,7 @@ export default function MusicBar() {
     duration: 200,
     delay: hide ? 0 : 300,
     easing: Easing.linear,
+    useNativeDriver: true,
   });
 
   const widthAnimation = Animated.timing(width, {
