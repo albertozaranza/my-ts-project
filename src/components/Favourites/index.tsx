@@ -24,7 +24,7 @@ export default function Favourites() {
   return (
     <Container>
       <TitleContainer>
-        <Title>My favourite (24)</Title>
+        <Title>My favourite ({comprimedData.length})</Title>
         <ViewAll>
           <SampleText>View all</SampleText>
         </ViewAll>

@@ -23,7 +23,7 @@ export default function Main() {
   const {id, albumLength} = useSelector(({music}: MusicProps) => music);
 
   useEffect(() => {
-    if (favourite) Alert.alert('Rádio favoritada');
+    if (favourite) Alert.alert('Favourited');
   }, [favourite]);
 
   function handleFavourite() {

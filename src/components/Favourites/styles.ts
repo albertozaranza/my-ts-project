@@ -23,11 +23,10 @@ export const SampleText = styled.Text`
 export const TitleContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 16px;
   padding: 16px;
 `;
 
-export const AlbumContainer = styled.View`
+export const AlbumContainer = styled.TouchableOpacity`
   flex-direction: row;
   padding-bottom: 10px;
 `;
@@ -53,5 +52,5 @@ export const AlbumSinger = styled.Text`
 `;
 
 export const List = styled.FlatList`
-  padding: 16px;
+  padding-horizontal: 16px;
 `;
