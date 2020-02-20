@@ -17,6 +17,8 @@ import IconButton from '../IconButton';
 
 import {Creators as MusicActions} from '../../store/ducks/music';
 
+import {Music as MusicProps} from '../types';
+
 const {width} = Dimensions.get('window');
 const widthSize = width - 32;
 const widthSizeTranslate = width - 101;
@@ -29,6 +31,8 @@ export default function MusicBar() {
   const [opacity, setOpacity] = useState(new Animated.Value(1));
   const [width, setWidth] = useState(new Animated.Value(widthSize));
   const [translateX, setTranslateX] = useState(new Animated.Value(0));
+
+  const {name, albumPhoto, id} = useSelector(({music}: MusicProps) => music);
 
   const dispatch = useDispatch();
 
@@ -97,10 +101,8 @@ export default function MusicBar() {
     setPaused(!paused);
   }
 
-  var id = 0;
   function handleNext() {
-    id >= 2 ? (id = 0) : (id += 1);
-    dispatch(MusicActions.nextMusic(id));
+    dispatch(MusicActions.nextMusic());
   }
 
   return (
@@ -122,12 +124,12 @@ export default function MusicBar() {
                 },
               ],
             }}
-            source={require('../../assets/rock.jpeg')}
+            source={albumPhoto}
           />
           <Blank />
         </AlbumPhotoContainer>
         <MusicInfo style={{opacity}}>
-          <Music>Best 15 rock</Music>
+          <Music>{name}</Music>
           <Status>{paused ? 'Paused' : 'Now playing'}</Status>
         </MusicInfo>
       </AlbumContainer>

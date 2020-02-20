@@ -1,17 +1,19 @@
-export const music = [
-  {
-    id: 0,
-    name: 'Billie Jean',
-    avatar: '../assets/billie-jean.jpg',
-  },
+const music = [
   {
     id: 1,
-    name: 'Thriller',
-    avatar: '../assets/thriller.jpeg',
+    name: 'Billie Jean',
+    avatar: require('../assets/billie-jean.jpg'),
   },
   {
     id: 2,
-    name: 'Billie Jean',
-    avatar: '../assets/smooth-criminal.jpg',
+    name: 'Thriller',
+    avatar: require('../assets/thriller.jpeg'),
+  },
+  {
+    id: 3,
+    name: 'Smooth Criminal',
+    avatar: require('../assets/smooth-criminal.jpg'),
   },
 ];
+
+export default music;

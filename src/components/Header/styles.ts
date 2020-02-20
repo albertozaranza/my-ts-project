@@ -22,7 +22,7 @@ export const RadioContainer = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: 40px;
+  font-size: 36px;
   color: #fff;
   margin-bottom: 6px;
 `;

@@ -8,3 +8,12 @@ export interface IconButton {
   disabled?: boolean;
   onPress?: () => void;
 }
+
+export interface Music {
+  music: {
+    id: number;
+    albumLength: number;
+    name: string;
+    albumPhoto: string;
+  };
+}

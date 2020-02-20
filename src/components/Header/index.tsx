@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Alert} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import {Music as MusicProps} from '../types';
 
 import {
   Container,
@@ -18,7 +20,7 @@ import {
 export default function Main() {
   const [favourite, setFavourite] = useState(false);
 
-  const {id} = useSelector(({music}) => music);
+  const {id, albumLength} = useSelector(({music}: MusicProps) => music);
 
   useEffect(() => {
     if (favourite) Alert.alert('Rádio favoritada');
@@ -33,9 +35,9 @@ export default function Main() {
       <Header>
         <RadioContainer>
           <Date>
-            <Small>{id}</Small>/30
+            <Small>{id}</Small>/{albumLength}
           </Date>
-          <Title>Radio 160</Title>
+          <Title>Michael Jackson</Title>
           <MusicInfo>115k+ favourite</MusicInfo>
         </RadioContainer>
 
