@@ -33,6 +33,7 @@ export default function Favourites() {
       <List
         data={comprimedData}
         scrollEnabled={false}
+        keyExtractor={item => item.id.toString()}
         renderItem={({item}: AlbumProps) => (
           <AlbumContainer>
             <AlbumPhoto source={item.avatar}></AlbumPhoto>
