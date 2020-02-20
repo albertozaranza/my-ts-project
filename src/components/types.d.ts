@@ -1,3 +1,5 @@
+import {ImageSourcePropType, ImagePropertiesSourceOptions} from 'react-native';
+
 export interface FavouriteButton {
   favourite: boolean;
 }
@@ -15,5 +17,14 @@ export interface Music {
     albumLength: number;
     name: string;
     albumPhoto: string;
+  };
+}
+
+export interface Album {
+  item: {
+    id: number;
+    name: string;
+    singer: string;
+    avatar: ImageSourcePropType;
   };
 }

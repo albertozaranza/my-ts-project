@@ -1,4 +1,4 @@
-const music = [
+const musics = [
   {
     id: 1,
     name: 'Billie Jean',
@@ -16,4 +16,4 @@ const music = [
   },
 ];
 
-export default music;
+export default musics;
