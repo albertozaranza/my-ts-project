@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import Main from './pages/Main';
 import Favourites from './pages/Favourites';
+import Music from './pages/Music';
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -14,6 +15,7 @@ export default function Router() {
       <Navigator initialRouteName="Main" headerMode="none">
         <Screen name="Main" component={Main} />
         <Screen name="Favourites" component={Favourites} />
+        <Screen name="Music" component={Music} />
       </Navigator>
     </NavigationContainer>
   );

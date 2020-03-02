@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {Animated, Easing, Dimensions} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+
+import {useNavigation} from '@react-navigation/native';
+
 import {
   Container,
   AlbumPhoto,
@@ -24,7 +27,6 @@ const widthSize = width - 32;
 const widthSizeTranslate = width - 101;
 
 export default function MusicBar() {
-  const [paused, setPaused] = useState(true);
   const [hide, setHide] = useState(false);
   const [rotation, setRotation] = useState(new Animated.Value(0));
   const [scale, setScale] = useState(new Animated.Value(1));
@@ -32,9 +34,12 @@ export default function MusicBar() {
   const [width, setWidth] = useState(new Animated.Value(widthSize));
   const [translateX, setTranslateX] = useState(new Animated.Value(0));
 
-  const {name, albumPhoto} = useSelector(({music}: MusicProps) => music);
+  const {name, albumPhoto, paused} = useSelector(
+    ({music}: MusicProps) => music,
+  );
 
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   useEffect(() => {
     handleAlbumPhotoAnimation();
@@ -101,7 +106,7 @@ export default function MusicBar() {
   }
 
   function handlePause() {
-    setPaused(!paused);
+    dispatch(MusicActions.pause());
   }
 
   function handleNext() {
@@ -131,7 +136,9 @@ export default function MusicBar() {
           />
           <Blank />
         </AlbumPhotoContainer>
-        <MusicInfo style={{opacity}}>
+        <MusicInfo
+          style={{opacity}}
+          onPress={() => navigation.navigate('Music')}>
           <Music>{name}</Music>
           <Status>{paused ? 'Paused' : 'Now playing'}</Status>
         </MusicInfo>

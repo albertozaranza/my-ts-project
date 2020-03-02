@@ -17,6 +17,7 @@ export interface Music {
     albumLength: number;
     name: string;
     albumPhoto: string;
+    paused: boolean;
   };
 }
 

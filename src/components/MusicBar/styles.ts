@@ -37,7 +37,7 @@ export const Status = styled.Text`
   color: #666;
 `;
 
-export const MusicInfo = Animated.createAnimatedComponent(styled.View`
+export const MusicInfo = Animated.createAnimatedComponent(styled.TouchableOpacity`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
